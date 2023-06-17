@@ -112,11 +112,11 @@ function get_version() {
 function console_menu() {
     clear
 
-    echo -n 'CHECKUSER DTUNNEL - '
+    echo -n 'CHECKUSER MENU v1 - '
     if is_installed; then
-        echo -e "\E[38;5;196m|\E[38;5;33m01\E[38;5;196m|\033[1;37m➜ \E[38;5;11m[INSTALADO]\e[0m - Versao:' $(get_version)'
+    echo -e '\e[32m[INSTALADO]\e[0m - Versao:' $(get_version)
     else
-        echo -e "\E[38;5;196m|\E[38;5;33m01\E[38;5;196m|\033[1;37m➜ \E[38;5;11m[DESINSTALADO]'
+    echo -e '\e[31m[DESINSTALADO]\e[0m'
     fi
 
     echo
@@ -129,26 +129,26 @@ function console_menu() {
 
     case $option in
     01 | 1)
-    start_process_install
-    console_menu
-    ;;
+        start_process_install
+        console_menu
+        ;;
     02 | 2)
-    reinstall_checkuser
-    console_menu
-    ;;
+        reinstall_checkuser
+        console_menu
+        ;;
     03 | 3)
-    uninstall_checkuser
-    console_menu
-    ;;
+        uninstall_checkuser
+        console_menu
+        ;;
     00 | 0)
-    echo '[*] Saindo...'
-    exit 0
-    ;;
+        echo '[*] Saindo...'
+        exit 0
+        ;;
     *)
-    echo '[*] Opção inválida!'
-    read -p 'Pressione ENTER para continuar...'
-    console_menu
-    ;;
+        echo '[*] Opção inválida!'
+        read -p 'Pressione ENTER para continuar...'
+        console_menu
+        ;;
     esac
 
 }
