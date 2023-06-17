@@ -116,7 +116,7 @@ function console_menu() {
     if is_installed; then
         echo -e "\E[38;5;196m|\E[38;5;33m01\E[38;5;196m|\033[1;37m➜ \E[38;5;11m[INSTALADO]\e[0m - Versao:' $(get_version)'
     else
-        echo -e "\E[38;5;196m|\E[38;5;33m01\E[38;5;196m|\033[1;37m➜ \E[38;5;11m[DESINSTALADO]\e[0m'
+        echo -e "\E[38;5;196m|\E[38;5;33m01\E[38;5;196m|\033[1;37m➜ \E[38;5;11m[DESINSTALADO]'
     fi
 
     echo
