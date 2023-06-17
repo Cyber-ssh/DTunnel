@@ -1,4 +1,4 @@
-url='https://github.com/DTunnel0/checkany.git'
+url='https://github.com/DTunnel0/DTCheckUser.git'
 checkuser='https://github.com/Cyber-ssh/DTunnel/raw/master/executable/checkuser'
 depends=('git' 'python3' 'pip3')
 
@@ -37,23 +37,23 @@ function install_dependencies() {
 }
 
 function install_checkuser() {
-    if [[ -d checkany ]]; then
-        rm -rf checkany
+    if [[ -d DTCheckUser ]]; then
+        rm -rf DTCheckUser
     fi
 
-    echo '[*] Clonando checkany...'
+    echo '[*] Clonando DTCheckUser...'
     git clone $url &>/dev/null
-    cd checkany
-    echo '[*] Instalando checkany...'
+    cd DTCheckUser
+    echo '[*] Instalando DTCheckUser...'
     pip3 install -r requirements.txt &>/dev/null
     sudo python3 setup.py install &>/dev/null
     cd ..
-    rm -rf checkany
-    echo '[+] checkany instalado!'
+    rm -rf DTCheckUser
+    echo '[+] DTCheckUser instalado!'
 }
 
 function start_checkuser() {
-    echo '[*] Iniciando checkany...'
+    echo '[*] Iniciando DTCheckUser...'
     read -p 'Porta: ' -e -i 5000 port
     checkuser_service $port $(command -v checkuser)
 
@@ -63,7 +63,8 @@ function start_checkuser() {
 
     addr=$(curl -s icanhazip.com)
 
-    echo 'URL: http://'$addr':'$port/checkany''
+    echo 'URL: http://'$addr':'$port''
+    echo 'WS: ws://'$addr':'$port''
     read
 }
 
@@ -74,19 +75,19 @@ function start_process_install() {
 }
 
 function uninstall_checkuser() {
-    echo '[*] Parando checkany...'
+    echo '[*] Parando DTCheckUser...'
 
     systemctl stop checkuser &>/dev/null
     systemctl disable checkuser &>/dev/null
     rm -rf /etc/systemd/system/checkuser.service &>/dev/null
     systemctl daemon-reload &>/dev/null
 
-    echo '[*] Desinstalando checkany...'
+    echo '[*] Desinstalando DTCheckUser...'
     python3 -m pip uninstall checkuser -y &>/dev/null
     python3 -m pip uninstall checkeruser -y &>/dev/null
 
     rm -rf $(which checkuser)
-    echo '[+] checkany desinstalado!'
+    echo '[+] DTCheckUser desinstalado!'
     read
 }
 
@@ -111,11 +112,11 @@ function get_version() {
 function console_menu() {
     clear
 
-    echo -n 'CHECKUSER ANYVPN v1 - '
+    echo -n 'CHECKUSER MENU v1 - '
     if is_installed; then
-    echo -e "\E[38;5;196m|\E[38;5;33m01\E[38;5;196m|\033[1;37m➜ \E[38;5;11m[INSTALADO]\e[0m - Versao:' $(get_version)
+    echo -e '\e[32m[INSTALADO]\e[0m - Versao:' $(get_version)
     else
-    echo -e "\E[38;5;196m|\E[38;5;33m01\E[38;5;196m|\033[1;37m➜ \E[38;5;11m[DESINSTALADO]\e[0m'
+    echo -e '\e[31m[DESINSTALADO]\e[0m'
     fi
 
     echo
