@@ -1,5 +1,5 @@
 url='https://github.com/DTunnel0/DTCheckUser.git'
-checkuser='https://github.com/Cyber-ssh/DTunnel/raw/master/executable/checkuser'
+checkuser='https://github.com/DTunnel0/DTCheckUser/raw/master/executable/checkuser'
 depends=('git' 'python3' 'pip3')
 
 cd ~
@@ -114,16 +114,16 @@ function console_menu() {
 
     echo -n 'CHECKUSER MENU v1 - '
     if is_installed; then
-    echo -e '\e[32m[INSTALADO]\e[0m - Versao:' $(get_version)
+        echo -e '\e[32m[INSTALADO]\e[0m - Versao:' $(get_version)
     else
-    echo -e '\e[31m[DESINSTALADO]\e[0m'
+        echo -e '\e[31m[DESINSTALADO]\e[0m'
     fi
 
     echo
-    echo -e "\E[38;5;196m|\E[38;5;33m01\E[38;5;196m|\033[1;37m➜ \E[38;5;11mINSTALAR CHECKUSER DTUNNEL"
-    echo -e "\E[38;5;196m|\E[38;5;33m02\E[38;5;196m|\033[1;37m➜ \E[38;5;11mREINSTALAR CHECKUSER"
-    echo -e "\E[38;5;196m|\E[38;5;33m03\E[38;5;196m|\033[1;37m➜ \E[38;5;11mDESINSTALAR CHECKUSER"
-    echo -e "\E[38;5;196m|\E[38;5;33m00\E[38;5;196m|\033[1;37m➜ \E[38;5;11mSAIR"
+    echo '[01] - INSTALAR CHECKUSER'
+    echo '[02] - REINSTALAR CHECKUSER'
+    echo '[03] - DESINSTALAR CHECKUSER'
+    echo '[00] - SAIR'
     echo
     read -p 'Escolha uma opção: ' option
 
